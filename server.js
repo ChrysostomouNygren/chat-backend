@@ -8,7 +8,7 @@ const messagesModel = require("./models/message.model");
 
 const io = new Server({
   cors: {
-    origin: ["https://chattiluring-front.herokuapp.com", "localhost:3000"],
+    origin: ["https://chattiluring-front.herokuapp.com", "http://localhost:3000"],
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
   },
