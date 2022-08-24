@@ -2,8 +2,8 @@ const db = require("../database");
 
 async function getRooms() {
   const sql = "SELECT * FROM rooms";
-  const result = await db.query(sql)
-  return result.rows
+  const result = await db.query(sql);
+  return result.rows;
 
   // return db.query(sql, function (error, rows) {
   //   if (error) {
@@ -23,15 +23,18 @@ async function getRooms() {
   // });
 }
 
-function addRoom(room) {
+async function addRoom(room) {
   const sql = "INSERT INTO rooms (name) VALUES ($1)";
+  const result = await db.query(sql, room);
 
-  return db.query(sql, [room], function (error) {
-    if (error) {
-      console.error(error.message);
-    }
-    return;
-  });
+  return result.rows;
+
+  // return db.query(sql, [room], function (error) {
+  //   if (error) {
+  //     console.error(error.message);
+  //   }
+  //   return;
+  // });
   // return new Promise((resolve, reject) => {
   //   db.run(sql, [room], (err) => {
   //     if (err) {
@@ -43,15 +46,18 @@ function addRoom(room) {
   // });
 }
 
-function deleteRoom(id) {
+async function deleteRoom(id) {
   const sql = "DELETE FROM rooms WHERE id = $1";
+  const result = await db.query(sql, id);
 
-  return db.query(sql, [id], function (error) {
-    if (error) {
-      console.error(error.message);
-    }
-    return;
-  });
+  return result.rows;
+
+  // return db.query(sql, [id], function (error) {
+  //   if (error) {
+  //     console.error(error.message);
+  //   }
+  //   return;
+  // });
   // return new Promise((resolve, reject) => {
   //   db.get(sql, id, (error) => {
   //     if (error) {
