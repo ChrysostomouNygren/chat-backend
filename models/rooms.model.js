@@ -1,14 +1,16 @@
 const db = require("../database");
 
-function getRooms() {
+async function getRooms() {
   const sql = "SELECT * FROM rooms";
+  const result = await db.query(sql)
+  return result.rows
 
-  return db.query(sql, function (error, rows) {
-    if (error) {
-      console.error(error.message);
-    }
-    return rows;
-  });
+  // return db.query(sql, function (error, rows) {
+  //   if (error) {
+  //     console.error(error.message);
+  //   }
+  //   return rows;
+  // });
 
   // return new Promise((resolve, reject) => {
   //   db.all(sql, (error, rows) => {
