@@ -42,7 +42,7 @@ function addRoom(room) {
 }
 
 function deleteRoom(id) {
-  const sql = "DELETE FROM rooms WHERE id = ¤1";
+  const sql = "DELETE FROM rooms WHERE id = $1";
 
   return db.query(sql, [id], function (error) {
     if (error) {
