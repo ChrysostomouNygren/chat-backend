@@ -13,7 +13,7 @@ const messageStatement = `
     id SERIAL PRIMARY KEY,
     value TEXT,
     room TEXT,
-    user TEXT,
+    name TEXT,
     date TEXT)`;
 
 const db = new Client({
