@@ -10,7 +10,7 @@ const roomStatement = `
 
 const messageStatement = `
   CREATE TABLE IF NOT EXISTS message (
-    id SERIAL PRIMARY KEY
+    id SERIAL PRIMARY KEY,
     value TEXT,
     room TEXT,
     user TEXT,
