@@ -1,15 +1,9 @@
 // const sqlite3 = require("sqlite3").verbose();
 
-
-
 // \/ här kraschar den?? \/
 // ****************************************************************
-import { Client } from "pg";
+const { Client } = require("pg");
 // ****************************************************************
-
-
-
-
 
 //   SQL-statement för tabell rooms, innehåller id & name.
 const roomStatement = `
