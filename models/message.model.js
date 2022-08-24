@@ -20,10 +20,10 @@ function getMessagesFromRoom(roomName) {
   // });
 }
 
-async function addMessage(message, room, user, date) {
+async function addMessage(message, room, name, date) {
   const sql =
-    "INSERT INTO message (value, room, user, date) VALUES ($1, $2, $3, $4)";
-  const result = await db.query(sql, [message, room, user, date]);
+    "INSERT INTO message (value, room, name, date) VALUES ($1, $2, $3, $4)";
+  const result = await db.query(sql, [message, room, name, date]);
   return result.rows;
 
   // return db.query(sql, [message, room, user, date], function (error, mess) {
