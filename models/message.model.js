@@ -20,16 +20,18 @@ function getMessagesFromRoom(roomName) {
   // });
 }
 
-function addMessage(message, room, user, date) {
+async function addMessage(message, room, user, date) {
   const sql =
     "INSERT INTO message (value, room, user, date) VALUES ($1, $2, $3, $4)";
+  const result = await db.query(sql, [message, room, user, date]);
+  return result.rows;
 
-  return db.query(sql, [message, room, user, date], function (error, mess) {
-    if (error) {
-      console.error(error.message);
-    }
-    return mess;
-  });
+  // return db.query(sql, [message, room, user, date], function (error, mess) {
+  //   if (error) {
+  //     console.error(error.message);
+  //   }
+  //   return mess;
+  // });
   // return new Promise((resolve, reject) => {
   //   db.run(sql, [message, room, user, date], (err) => {
   //     if (err) {
@@ -42,15 +44,18 @@ function addMessage(message, room, user, date) {
   // });
 }
 
-function deleteMessages(room) {
+async function deleteMessages(room) {
   const sql = "DELETE FROM message WHERE room = $1";
+  const result = await db.query(sql, room);
 
-  return db.query(sql, [room], function (error, del) {
-    if (error) {
-      console.error(error.message);
-    }
-    return del;
-  });
+  return result.rows;
+
+  // return db.query(sql, [room], function (error, del) {
+  //   if (error) {
+  //     console.error(error.message);
+  //   }
+  //   return del;
+  // });
   // return new Promise((resolve, reject) => {
   //   db.get(sql, room, (error) => {
   //     if (error) {
