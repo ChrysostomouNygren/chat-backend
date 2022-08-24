@@ -50,7 +50,7 @@ db.query(messageStatement, (error) => {
     console.error(error.message);
   } else {
     // Lägga till meddelanden med detta SQL-statementet
-    const messageInsert = `INSERT INTO message (value, room, user, date) VALUES ($1, $2, $3, $4)`;
+    const messageInsert = `INSERT INTO message (value, room, name, date) VALUES ($1, $2, $3, $4)`;
     // Prövar att lägga till ett rum här:
     db.query(messageInsert, [
       "Welcome!",
