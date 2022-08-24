@@ -1,5 +1,5 @@
 const { Server } = require("socket.io");
-const port = 4000;
+const port = process.env.PORT;
 const fs = require("fs");
 
 // models
@@ -10,6 +10,7 @@ const io = new Server({
   cors: {
     origin: "*",
     methods: ["GET", "POST", "DELETE"],
+    credentials: true,
   },
 });
 
@@ -102,14 +103,14 @@ io.on("connection", (socket) => {
       callback({ status: "ok" });
       const messages = await messagesModel.getMessagesFromRoom(currentRoom);
       io.to(currentRoom).emit("get_messages", messages);
-      
+
       const add = JSON.stringify({
         date: date,
         user: user,
         message: data,
         room: currentRoom,
       });
-      fs.writeFile("messages.txt", add + ', ', { flag: "a+" }, (err) => {
+      fs.writeFile("messages.txt", add + ", ", { flag: "a+" }, (err) => {
         if (err) throw err;
       });
     } else {
