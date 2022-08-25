@@ -11,7 +11,7 @@ const roomStatement = `
 const messageStatement = `
   CREATE TABLE IF NOT EXISTS message (
     id SERIAL PRIMARY KEY,
-    value TEXT,
+    message TEXT,
     room TEXT,
     name TEXT,
     date TEXT)`;
