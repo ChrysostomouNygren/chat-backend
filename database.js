@@ -55,6 +55,7 @@ db.query(messageStatement, (error) => {
     db.query(messageInsert, [
       "Welcome!",
       "default",
+      // namnet skrivs inte ut?
       "botronic",
       "2022-06-30 23:59:59",
     ]);

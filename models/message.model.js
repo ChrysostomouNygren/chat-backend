@@ -24,7 +24,7 @@ async function getMessagesFromRoom(roomName) {
 
 async function addMessage(message, room, name, date) {
   const sql =
-    "INSERT INTO message (value, room, name, date) VALUES ($1, $2, $3, $4)";
+    "INSERT INTO message (message, room, name, date) VALUES ($1, $2, $3, $4)";
   const result = await db.query(sql, [message, room, name, date]);
   return result.rows;
 
