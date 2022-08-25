@@ -2,7 +2,7 @@ const db = require("../database");
 
 async function getMessagesFromRoom(roomName) {
   const sql = "SELECT * FROM message WHERE room = $1";
-  const result = await db.query(sql, roomName);
+  const result = await db.query(sql, [roomName]);
   return result.rows;
 
   // return db.query(sql, [roomName], function (error, rows) {
@@ -48,7 +48,7 @@ async function addMessage(message, room, name, date) {
 
 async function deleteMessages(room) {
   const sql = "DELETE FROM message WHERE room = $1";
-  const result = await db.query(sql, room);
+  const result = await db.query(sql, [room]);
 
   return result.rows;
 

@@ -25,7 +25,7 @@ async function getRooms() {
 
 async function addRoom(room) {
   const sql = "INSERT INTO rooms (name) VALUES ($1)";
-  const result = await db.query(sql, room);
+  const result = await db.query(sql, [room]);
 
   return result.rows;
 
@@ -48,7 +48,7 @@ async function addRoom(room) {
 
 async function deleteRoom(id) {
   const sql = "DELETE FROM rooms WHERE id = $1";
-  const result = await db.query(sql, id);
+  const result = await db.query(sql, [id]);
 
   return result.rows;
 
