@@ -2,13 +2,16 @@ const db = require("../database");
 
 function getMessagesFromRoom(roomName) {
   const sql = "SELECT * FROM message WHERE room = $1";
+  const result = await db.query(sql, roomName)
 
-  return db.query(sql, [roomName], function (error, rows) {
-    if (error) {
-      console.error(error.message);
-    }
-    return rows;
-  });
+  return result.rows;
+
+  // return db.query(sql, [roomName], function (error, rows) {
+  //   if (error) {
+  //     console.error(error.message);
+  //   }
+  //   return rows;
+  // });
   // return new Promise((resolve, reject) => {
   //   db.all(sql, roomName, (error, rows) => {
   //     if (error) {
