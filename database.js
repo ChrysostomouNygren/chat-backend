@@ -11,7 +11,7 @@ const roomStatement = `
 const messageStatement = `
   CREATE TABLE IF NOT EXISTS message (
     id SERIAL PRIMARY KEY,
-    mess TEXT,
+    value TEXT,
     room TEXT,
     name TEXT,
     date TEXT)`;
@@ -50,7 +50,7 @@ db.query(messageStatement, (error) => {
     console.error(error.message);
   } else {
     // Lägga till meddelanden med detta SQL-statementet
-    const messageInsert = `INSERT INTO message (mess, room, name, date) VALUES ($1, $2, $3, $4)`;
+    const messageInsert = `INSERT INTO message (value, room, name, date) VALUES ($1, $2, $3, $4)`;
     // Prövar att lägga till ett rum här:
     db.query(messageInsert, [
       "Welcome!",
